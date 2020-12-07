@@ -28,5 +28,11 @@ pipeline {
       }
     }
 
+    stage('Push Docker Image to Dockerhub') {
+      steps {
+        dockerNode(image: 'capstone', credentialsId: 'dockerhub')
+      }
+    }
+
   }
 }
