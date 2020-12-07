@@ -1,4 +1,9 @@
 pipeline {
+  environment {
+    registry = "zwayyed00/capstone"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+  }
   agent any
   stages {
     stage('Linting') {
@@ -12,6 +17,14 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         sh 'docker build --tag=zwayyed00/capstone .'
+      }
+    }
+    
+    stage('Push Docker Image to Dockerhub') {
+      steps {
+        withDockerRegistry([url: "", credentialsId: "dockerhub"]) {
+          sh 'docker push $registry:v1'
+        }
       }
     }
 
