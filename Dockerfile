@@ -2,4 +2,4 @@ FROM nginx:latest
 
 COPY index.html /usr/share/nginx/html
 
-Expose 80
+EXPOSE 80
