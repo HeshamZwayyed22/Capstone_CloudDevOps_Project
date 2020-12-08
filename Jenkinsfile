@@ -2,7 +2,6 @@ pipeline {
   environment {
     registry = "zwayyed00/capstone"
     registryCredential = 'dockerhub'
-    dockerImage = ''
   }
   agent any
   stages {
@@ -35,6 +34,35 @@ pipeline {
         }
       }
     }
+
+    stage('Deploy Blue Deployment') {
+      steps {
+	withAWS(region:'us-west-2', credentials:'aws-static') {
+          sh 'kubectl apply -f Blue_Deployment.yaml'
+          sh 'kubectl apply -f Blue_Svc.yaml'
+          sh 'kubectl get deployments -o wide'
+          sh 'kubectl get services -o wide'
+				}
+
+			}
+		}
+    stage('Human Approval') {
+            steps {
+                input "Redirect traffic to green deployment now?"
+            }
+        }
+    
+     stage('Deploy Green Deployment') {
+      steps {
+        withAWS(region:'us-west-2', credentials:'aws-static') {
+          sh 'kubectl apply -f Green_Deployment.yaml'
+          sh 'kubectl apply -f Green_Svc.yaml'
+          sh 'kubectl get deployments -o wide'
+          sh 'kubectl get services -o wide'
+                                }
+
+                        }
+                }
 
 
   }

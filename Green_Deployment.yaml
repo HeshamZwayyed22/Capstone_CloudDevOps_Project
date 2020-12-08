@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: capstone-green
+  name: capstone-green
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: capstone-green
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: capstone-green
+    spec:
+      containers:
+      - image: zwayyed00/capstone:v1
+        name: capstone
+        resources: {}
+        ports:
+        - containerPort: 80
+status: {}

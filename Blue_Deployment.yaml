@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: capstone-blue
+  name: capstone-blue
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: capstone-blue
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: capstone-blue
+    spec:
+      containers:
+      - image: zwayyed00/capstone:v1
+        name: capstone
+        resources: {}
+        ports:
+        - containerPort: 80
+status: {}
