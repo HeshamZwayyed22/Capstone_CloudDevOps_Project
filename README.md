@@ -15,11 +15,11 @@ I created a CI/CD pipeline for a basic website that deploys to a cluster in AWS 
 # Project Requirement:
 To be able to use this CI/CD pipeline you will need to install:
 
-Jenkins
-Blue Ocean Plugin in Jenkins
-Pipeline-AWS Plugin in Jenkins
-Docker
-Pip
-AWS Cli
-Eksctl
-Kubectl
+- Jenkins
+- Blue Ocean Plugin in Jenkins
+- Pipeline-AWS Plugin in Jenkins
+- Docker
+- Pip
+- AWS Cli
+- Eksctl
+- Kubectl
