@@ -42,15 +42,14 @@ pipeline {
           sh 'kubectl apply -f Blue_Svc.yaml'
           sh 'kubectl get deployments -o wide'
           sh 'kubectl get services -o wide'
-				}
-
-			}
-		}
+	}
+      }
+    }
     stage('Human Approval') {
             steps {
                 input "Redirect traffic to green deployment now?"
-            }
-        }
+      }
+    }
     
      stage('Deploy Green Deployment') {
       steps {
@@ -59,10 +58,9 @@ pipeline {
           sh 'kubectl apply -f Green_Svc.yaml'
           sh 'kubectl get deployments -o wide'
           sh 'kubectl get services -o wide'
-                                }
-
-                        }
-                }
+        }
+      }
+    }
 
 
   }
